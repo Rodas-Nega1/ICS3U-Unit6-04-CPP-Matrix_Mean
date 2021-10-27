@@ -10,7 +10,7 @@
 
 
 template <int rows, int cols>
-int MatrixMean(int (&randomGrid)[rows][cols], int rowNumber, int columnNumber) {
+int MatrixMean(int (&randomGrid)[rows][cols]) {
     // this function calculates the mean of all the elements in a 2D array
 
     int sumOfMatrixElements = 0;
@@ -20,7 +20,8 @@ int MatrixMean(int (&randomGrid)[rows][cols], int rowNumber, int columnNumber) {
         for (size_t columnValue = 0; columnValue < cols; columnValue++)
             sumOfMatrixElements += randomGrid[rowValue][columnValue];
     }
-    sumOfMatrixElements = sumOfMatrixElements / (rowNumber * columnNumber);
+    int arraySize = sizeof(randomGrid)/sizeof(randomGrid[0]);
+    sumOfMatrixElements = sumOfMatrixElements / arraySize;
 
     return sumOfMatrixElements;
 }
@@ -51,7 +52,7 @@ int main() {
         std::cout << std::endl;
     }
 
-    roundedMatrixMean = MatrixMean(matrix, rows, columns);
+    roundedMatrixMean = MatrixMean(matrix);
     std::cout << "" << std::endl;
     std::cout << "The mean of the matrix is: "
     << roundedMatrixMean << std::endl;
